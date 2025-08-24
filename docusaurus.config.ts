@@ -25,6 +25,7 @@ const config: Config = {
   organizationName: 'laikit-dev', // Usually your GitHub org/user name.
   projectName: 'laikit-dev.github.io', // Usually your repo name.
 
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
