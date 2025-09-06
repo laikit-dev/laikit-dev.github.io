@@ -4,7 +4,7 @@
 >                ————quanac-lcx
 > 鬼知道更新了什么。
 
-## Latest Upd
+## Latest Updates
 ### 2025/09/06
 1. 修改了部分错误语法。  
 ~~2. 移除了 Him。~~  
