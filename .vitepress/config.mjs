@@ -39,7 +39,7 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/luogu-saver-dev/docs/edit/v1/:path',
+      pattern: 'https://github.com/laikit-dev/docs/edit/v1/:path',
       text: '在 Github 上编辑此页面'
     },
 
@@ -85,7 +85,7 @@ export default defineConfig({
 
     // 社交链接配置
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/luogu-saver-dev/luogu-saver' }
+      { icon: 'github', link: 'https://github.com/laikit-dev/luogu-saver' }
     ],
 
     // 页脚配置
