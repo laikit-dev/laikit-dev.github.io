@@ -1,6 +1,6 @@
 # AIGC 公约
 
-我们不反对使用 AI 生成代码工具（AIGC）来辅助开发，但是我们坚决反对 `vibe coding`（即盲目复制粘贴 AI 生成的代码而不理解其含义）。
+我们不反对使用 AI 生成代码工具（AIGC）来辅助开发，但是我们坚决反对 vibe-coding（即盲目复制粘贴 AI 生成的代码而不理解其含义）。
 
 ## 使用 AIGC 的准则 {#aigc-guidelines}
 
