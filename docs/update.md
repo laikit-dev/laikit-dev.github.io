@@ -1,7 +1,7 @@
 # 更新日志
 > 更新了什么呢？  
 > 鬼知道更新了什么。  
-> ———— quanac-lcx
+> —— quanac-lcx
 
 ## Latest Updates
 
