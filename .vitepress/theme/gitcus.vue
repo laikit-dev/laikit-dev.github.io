@@ -3,18 +3,17 @@
     <Giscus
       id="comments"
       :key="route.path"
-      repo="luogu-saver-dev/docs"
+        repo="laikit-dev/docs"
         repo-id="R_kgDOPk8gkA"
         category="Announcements"
         category-id="DIC_kwDOPk8gkM4CuqZ_"
         mapping="pathname"
         strict="0"
         reactions-enabled="1"
-        emit-metadata="0"
+        emit-metadata="1"
         input-position="top"
         theme="preferred_color_scheme"
         lang="zh-CN"
-        loading="lazy"
         crossorigin="anonymous"
       :theme="isDark ? 'dark_tritanopia' : 'light_tritanopia'"></Giscus>
   </div>
