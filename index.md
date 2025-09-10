@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: "洛谷保存站帮助中心"
-  text: ""
-  tagline: Powered by VitePress
+  text: "可靠的洛谷专栏和剪贴板保存平台"
+  tagline: 
   image:
       src: https://tc.z.wiki/autoupload/f/-L5avoIWVTc8baQaL0soPbKPUV3bq0pPpk9eCbAMfSqyl5f0KlZfm6UsKj-HyTuv/20250828/TVFI/undraw_book-lover_m9n3.svg?id=818967
       alt: 背景图片
@@ -20,15 +20,13 @@ hero:
       text: 贡献指南
       link: /docs/dev/saver
     - theme: alt
-      text: 旧前端
-      link: https://old.luogu.me
 
 features:
   - title: 操作简便，开箱即用
     details: 只需将需要保存的专栏/剪切板的 URL 改成 `.me` 即可保存查看。
-  - title: 这里留给别人写
-    details: The quick brown fox jumps over the lazy dog.
-  - title: 这里留给别人写
-    details: The quick brown fox jumps over the lazy dog.
+  - title: 这里不是广告位！
+    details: 可能也是的！
+  - title: 这里不是广告位！
+    details: 可能也是的！
 ---
 
