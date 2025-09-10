@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: "洛谷保存站帮助中心"
-  text: "可靠的洛谷专栏和剪贴板保存平台"
-  tagline: 
+  text: 
+  tagline: "可靠的洛谷专栏和剪贴板保存平台"
   image:
       src: https://tc.z.wiki/autoupload/f/-L5avoIWVTc8baQaL0soPbKPUV3bq0pPpk9eCbAMfSqyl5f0KlZfm6UsKj-HyTuv/20250828/TVFI/undraw_book-lover_m9n3.svg?id=818967
       alt: 背景图片
