@@ -218,9 +218,7 @@
     margin-right: 4px;
     background-image: url(https://api.iconify.design/simple-icons:wechat.svg?color=%231AAD1A);
   }
-}
-
-&[href^='https://luogu.com']::before,
+  &[href^='https://luogu.com']::before,
   &[href^='https://luogu.com.cn']::before,
   &[href^='https://wiki.luogu.me']::before,
   &[href^='https://luogu.me']::before {
