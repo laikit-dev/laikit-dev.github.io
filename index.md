@@ -7,7 +7,7 @@ hero:
   text: 
   tagline: "可靠的洛谷专栏和剪贴板保存平台"
   image:
-      src: https://tc.z.wiki/autoupload/f/-L5avoIWVTc8baQaL0soPbKPUV3bq0pPpk9eCbAMfSqyl5f0KlZfm6UsKj-HyTuv/20250828/TVFI/undraw_book-lover_m9n3.svg?id=818967
+      src: /public/homePage.svg
       alt: 背景图片
   actions:
     - theme: brand
@@ -24,9 +24,9 @@ hero:
 features:
   - title: 操作简便，开箱即用
     details: 只需将需要保存的专栏/剪切板的 URL 改成 `.me` 即可保存查看。
-  - title: 这里不是广告位！
-    details: 可能也是的！
-  - title: 这里不是广告位！
-    details: 可能也是的！
+  - title: 诚挚的祝福
+    details: 祝各位考生在 CSP 考试 rp+=LLONG_MAX！
+  - title: 诚挚的祝福
+    details: 祝各位考生在 CSP 考试 rp+=LLONG_MAX！
 ---
 
