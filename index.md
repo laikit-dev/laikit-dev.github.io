@@ -19,7 +19,6 @@ hero:
     - theme: alt
       text: 贡献指南
       link: /docs/dev/saver
-    - theme: alt
 
 features:
   - title: 操作简便，开箱即用
