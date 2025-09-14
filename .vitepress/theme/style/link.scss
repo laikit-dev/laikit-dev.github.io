@@ -219,12 +219,13 @@
     background-image: url(https://api.iconify.design/simple-icons:wechat.svg?color=%231AAD1A);
   }
   &[href^='https://luogu.com']::before,
-  &[href^='https://luogu.com.cn']::before,
+  &[href^='https://www.luogu.com.cn']::before,
   &[href^='https://help.luogu.me']::before,
   &[href^='https://help.luogu.com.cn']::before,
   &[href^='https://luogu.org']::before,
   &[href^='https://cdn.luogu.com.cn']::before,
   &[href^='https://analytics.luogu.me']::before,
+  &[href^='https://luogu.me']::before,
   &[href^='https://www.luogu.me']::before {
     width: 18px;
     height: 18px;
