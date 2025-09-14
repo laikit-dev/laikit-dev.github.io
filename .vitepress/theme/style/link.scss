@@ -124,7 +124,6 @@
     background-image: url(https://api.iconify.design/logos:npm-icon.svg);
   }
 
-
   &[href^='https://pnpm.io']::before {
     width: 16px;
     height: 16px;
@@ -218,6 +217,15 @@
     margin-right: 4px;
     background-image: url(https://api.iconify.design/simple-icons:wechat.svg?color=%231AAD1A);
   }
+
+  &[href^='https://x.com']::before,
+  &[href^='https://twitter.com']::before{
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+    background-image: url(https://img.kkksc03.com/image.php?file=68c66d1190825.png);
+  }
+
   &[href^='https://luogu.com']::before,
   &[href^='https://www.luogu.com.cn']::before,
   &[href^='https://help.luogu.me']::before,
@@ -234,7 +242,13 @@
   }
 }
 
-// 暗黑模式
+/* 通过 JS 动态添加的类隐藏图标 */
+.vp-doc.no-link-icon-page a::before {
+  content: none !important;
+  display: none !important;
+}
+
+// 暗黑模式（保持不变）
 .dark .vp-doc a {
   &[target='_blank'],
   &[href^='./'],

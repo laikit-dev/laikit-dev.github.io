@@ -6,7 +6,7 @@
 
 https://default.link.example.com
 
-https://img.shields.io/
+https://img.shields.io/ （特别提醒：由于设计原因，此本链接前无图标）
 
 [https://weizwz.com](https://weizwz.com/)
 

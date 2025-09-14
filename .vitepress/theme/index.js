@@ -15,5 +15,17 @@ export default {
   // 扩展应用（如需注册全局组件可在此添加）
   enhanceApp({ app, router, siteData }) {
     // 示例：app.component('ComponentName', Component)
+  },
+  ...DefaultTheme,
+  setup() {
+    // 页面加载完成后执行
+    window.addEventListener('load', () => {
+      // 匹配 URL 路径包含 "/docs/special/thanks.html" 的页面
+      if (window.location.pathname.includes('/docs/special/thanks.html')) {
+        // 给 .vp-doc 容器添加自定义类
+        const vpDoc = document.querySelector('.vp-doc')
+        if (vpDoc) vpDoc.classList.add('no-link-icon-page')
+      }
+    })
   }
 }
