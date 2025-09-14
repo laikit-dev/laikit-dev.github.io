@@ -242,11 +242,7 @@
   }
 }
 
-/* 通过 JS 动态添加的类隐藏图标 */
-.vp-doc.no-link-icon-page a::before {
-  content: none !important;
-  display: none !important;
-}
+
 
 // 暗黑模式（保持不变）
 .dark .vp-doc a {

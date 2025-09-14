@@ -1,6 +1,4 @@
----
-class: no-link-icon-page 
----
+
 
 # 特别鸣谢
 > [!IMPORTANT]
