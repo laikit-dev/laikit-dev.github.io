@@ -7,7 +7,7 @@ hero:
   text: 
   tagline: "可靠的洛谷专栏和剪贴板保存平台"
   image:
-      src: /public/homePage.svg
+      src: https://img.kkksc03.com/secret/global/homePage.svg
       alt: 背景图片
   actions:
     - theme: brand
