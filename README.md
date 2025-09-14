@@ -4,7 +4,13 @@
 - Markdown 请参考：https://vitepress.dev/guide/markdown  
 - RunTime API 请参考： https://vitepress.dev/reference/runtime-api#runtime-api
 
-启动项目：
+- 安装依赖：
+```bash
+pnpm install
+```
+- 启动项目：
 ```bash
 pnpm run docs:dev
 ```
+
+之后按照正常的 Markdown 格式编写即可！
