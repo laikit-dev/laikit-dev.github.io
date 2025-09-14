@@ -220,6 +220,17 @@
   }
 }
 
+&[href^='https://luogu.com']::before,
+  &[href^='https://luogu.com.cn']::before,
+  &[href^='https://wiki.luogu.me']::before,
+  &[href^='https://luogu.me']::before {
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+    background-image: url(https://fecdn.luogu.com.cn/favicon.ico);
+  }
+}
+
 // 暗黑模式
 .dark .vp-doc a {
   &[target='_blank'],
