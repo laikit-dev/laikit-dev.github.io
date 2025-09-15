@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress'
 
-// https://vitepress.dev/reference/site-config
+// https://vitepress.dev/reference/site-config 
 
 const icons = {
   luogu: {
