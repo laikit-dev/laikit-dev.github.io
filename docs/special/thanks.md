@@ -32,13 +32,13 @@ const members = [
     ]
   },
   {
-    avatar: 'https://cdn.luogu.com.cn/upload/usericon/UID.png',
-    name: 'NAME',
-    title: 'XXX',
+    avatar: 'https://cdn.luogu.com.cn/upload/usericon/1160894.png',
+    name: 'FISH酱',
+    title: 'Developer',
     links: [
-      { link: 'https://github.com/XXX' },
-      { link: 'https://twitter.com/XXX' },
-      { link: 'https://www.luogu.com.cn/user/UID' }
+      { link: 'https://github.com/svipwing' },
+      { link: 'https://twitter.com/jishuyun80567' },
+      { link: 'https://www.luogu.com.cn/user/1160894' }
     ]
   },
   {
