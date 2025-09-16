@@ -42,13 +42,13 @@ const members = [
     ]
   },
   {
-    avatar: 'https://cdn.luogu.com.cn/upload/usericon/UID.png',
-    name: 'NAME',
-    title: 'XXX',
+    avatar: 'https://cdn.luogu.com.cn/upload/usericon/455474.png',
+    name: 'lailai',
+    title: 'Developer',
     links: [
-      { link: 'https://github.com/XXX' },
-      { link: 'https://twitter.com/XXX' },
-      { link: 'https://www.luogu.com.cn/user/UID' }
+      { link: 'https://github.com/lailai0916' },
+      { link: 'https://twitter.com/lailai0x394' },
+      { link: 'https://www.luogu.com.cn/user/455474' }
     ]
   },
   {
