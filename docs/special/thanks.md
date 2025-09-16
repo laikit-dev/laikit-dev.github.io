@@ -41,26 +41,26 @@ const members = [
       { link: 'https://www.luogu.com.cn/user/1160894' }
     ]
   },
-  {
-    avatar: 'https://cdn.luogu.com.cn/upload/usericon/455474.png',
-    name: 'lailai',
-    title: 'Developer',
-    links: [
-      { link: 'https://github.com/lailai0916' },
-      { link: 'https://twitter.com/lailai0x394' },
-      { link: 'https://www.luogu.com.cn/user/455474' }
-    ]
-  },
-  {
-    avatar: 'https://cdn.luogu.com.cn/upload/usericon/UID.png',
-    name: 'NAME',
-    title: 'XXX',
-    links: [
-      { link: 'https://github.com/XXX' },
-      { link: 'https://twitter.com/XXX' },
-      { link: 'https://www.luogu.com.cn/user/UID' }
-    ]
-  }
+  // {
+  //   avatar: 'https://cdn.luogu.com.cn/upload/usericon/UID.png',
+  //   name: 'NAME',
+  //   title: 'XXX',
+  //   links: [
+  //     { link: 'https://github.com/XXX' },
+  //     { link: 'https://twitter.com/XXX' },
+  //     { link: 'https://www.luogu.com.cn/user/UID' }
+  //   ]
+  // },
+  // {
+  //   avatar: 'https://cdn.luogu.com.cn/upload/usericon/UID.png',
+  //   name: 'NAME',
+  //   title: 'XXX',
+  //   links: [
+  //     { link: 'https://github.com/XXX' },
+  //     { link: 'https://twitter.com/XXX' },
+  //     { link: 'https://www.luogu.com.cn/user/UID' }
+  //   ]
+  // }
 ]
 
 const contributors = [
@@ -86,6 +86,15 @@ const contributors = [
     links: [
       { link: 'https://github.com/cirrationaler' },
       { link: 'https://www.luogu.com.cn/user/1394361' }
+    ]
+  },
+  {
+    avatar: 'https://cdn.luogu.com.cn/upload/usericon/455474.png',
+    name: 'lailai',
+    links: [
+      { link: 'https://lailai.one' },
+      { link: 'https://github.com/lailai0916' },
+      { link: 'https://www.luogu.com.cn/user/455474' }
     ]
   }
 ]
