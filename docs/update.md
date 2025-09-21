@@ -1,4 +1,7 @@
 # 更新日志
+
+<img src="https://lgs-res.kkksc03.com/docs/update-icon.svg" width="24" height="24" />
+
 > 更新了什么呢？    
 > —— quanac-lcx
 > 

@@ -21,11 +21,13 @@ hero:
       link: /docs/dev/saver
 
 features:
-  - title: 操作简便，开箱即用
+  - icon: ⚡
+    title: 操作简便，开箱即用
     details: 只需将需要保存的专栏/剪切板的 URL 改成 `.me` 即可保存查看。
-  - title: 诚挚的祝福
-    details: 祝各位考生在 CSP 考试 rp+=LLONG_MAX！
-  - title: 诚挚的祝福
-    details: 祝各位考生在 CSP 考试 rp+=LLONG_MAX！
+  - icon: 🎁
+    title: 诚挚的祝福
+    details: 祝各位考生在 CSP 和 GESP 考试获得优异的成绩。
+  - icon: ⬆️
+    title: 最新前端
+    details: 好看的一批！
 ---
-
