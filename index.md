@@ -4,21 +4,21 @@ layout: home
 
 hero:
   name: "洛谷保存站帮助中心"
-  text: 
+  text:
   tagline: "可靠的洛谷专栏和剪贴板保存平台"
   image:
-      src: https://img.kkksc03.com/secret/global/homePage.svg
-      alt: 背景图片
+    src: /image/homePage.svg
+    alt: 背景图片
   actions:
     - theme: brand
-      text: 阅读帮助文档
+      text: 帮助文档
       link: /docs/home
     - theme: brand
-      text: 洛谷保存站
-      link: https://www.luogu.me
-    - theme: alt
       text: 贡献指南
       link: /docs/dev/saver
+    - theme: alt
+      text: 洛谷保存站
+      link: https://www.luogu.me
 
 features:
   - icon: ⚡
