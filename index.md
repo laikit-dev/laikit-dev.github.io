@@ -13,7 +13,7 @@ hero:
     - theme: brand
       text: 帮助文档
       link: /docs/home
-    - theme: brand
+    - theme: alt
       text: 贡献指南
       link: /docs/dev/saver
     - theme: alt
