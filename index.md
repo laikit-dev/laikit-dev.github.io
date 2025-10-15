@@ -23,11 +23,11 @@ hero:
 features:
   - icon: ⚡
     title: 操作简便，开箱即用
-    details: 只需将需要保存的专栏/剪切板的 URL 改成 `.me` 即可保存查看。
+    details: 只需将专栏或剪切板链接 URL 改为 .me 即可保存查看。
   - icon: 🎁
-    title: 诚挚的祝福
-    details: 祝各位考生在 CSP 和 GESP 考试获得优异的成绩。
-  - icon: ⬆️
-    title: 最新前端
-    details: 好看的一批！
+    title: 永久免费，长期可用
+    details: 所有保存功能完全开放，无付费内容和广告干扰。
+  - icon: 💎
+    title: 现代化前端体验
+    details: 基于最新前端框架构建，加载流畅、视觉统一、极致简洁。
 ---
