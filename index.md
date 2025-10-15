@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "洛谷保存站帮助中心"
-  text:
+  name: "洛谷保存站"
+  text: "帮助中心"
   tagline: "可靠的洛谷专栏和剪贴板保存平台"
   image:
     src: /homePage.svg
