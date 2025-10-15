@@ -95,9 +95,6 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/laikit-dev/luogu-saver' },
       { 
-        icon: 'github', link: 'https://github.com/laikit-dev/luogu-saver'
-      },
-      { 
         icon: icons.luogu, 
         link: 'https://www.luogu.me'
       }
