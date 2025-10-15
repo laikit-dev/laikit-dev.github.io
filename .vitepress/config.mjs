@@ -15,7 +15,7 @@ export default defineConfig({
     outline: [2, 6], // 正确：outline 接受 [minLevel, maxLevel]，2~6级标题符合规范
     nav: [
       { text: "首页", link: "/" },
-      { text: "保存站", link: "https://www.luogu.me" },
+      { text: "洛谷保存站", link: "https://www.luogu.me" },
     ],
 
     // 搜索配置（正确嵌套在 themeConfig 内）
@@ -85,7 +85,7 @@ export default defineConfig({
 
     // 社交链接配置
     socialLinks: [
-      { icon: "github", link: "https://github.com/laikit-dev/luogu-saver" },
+      { icon: "github", link: "https://github.com/laikit-dev/docs" },
     ],
 
     // 页脚配置
