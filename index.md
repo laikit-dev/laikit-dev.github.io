@@ -11,14 +11,17 @@ hero:
     alt: 背景图片
   actions:
     - theme: brand
-      text: 帮助文档
+      text: 📚 帮助文档
       link: /docs/home
     - theme: alt
-      text: 贡献指南
+      text: 🛠️ 贡献指南
       link: /docs/dev/saver
     - theme: alt
-      text: 洛谷保存站
+      text: 🌟 洛谷保存站
       link: https://www.luogu.me
+    - theme: brand
+      text: 🎨 冬日绘版
+      link: https://www.luogu.me/paintboard
 
 features:
   - icon: ⚡

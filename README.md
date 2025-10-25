@@ -1,6 +1,5 @@
 # 洛谷保存站帮助中心
 
-<p style="color:red">祝所有 OIers rp++</p>
 
 编写指南：
  

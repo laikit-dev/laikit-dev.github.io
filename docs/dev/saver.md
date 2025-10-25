@@ -1,4 +1,4 @@
-# 为洛谷保存站做出贡献
+# 为洛谷保存站做出贡献 {#contribute-to-luogu-saver}
 
 ::: tip 请注意
 
@@ -16,9 +16,9 @@
 
 [Github 仓库](https://github.com/luogu-saver-dev/luogu-saver)
 
-## 技术栈
+## 技术栈 {#tech-stack}
 
-### 核心技术栈
+### 核心技术栈 {#core-tech-stack}
 
 1. **后端框架**
    - Node.js：基于 `v22.18.0` 版本，作为运行时环境
@@ -41,7 +41,7 @@
    - chalk：终端日志着色（见 `logger.js`）
 
 
-### 功能模块划分
+### 功能模块划分 {#module-division}
 
 - 路由管理：通过 Express 路由拆分功能（`routes/article.js`、`routes/paste.js` 等）
 - 任务队列：处理异步任务（`request.js` 中的队列管理和请求限制）
@@ -50,36 +50,36 @@
 - 权限中间件：`auth.js` 处理用户认证
 
 
-### 开发与部署
+### 开发与部署 {#development-and-deployment}
 
 - 依赖管理：使用 `npm`（`package.json`）
 - **启动方式：通过 `node app.js` 启动服务（见 README 中的使用说明）
 - 环境配置：通过 `.env` 文件管理环境变量（`.gitignore` 中包含）
 
-## 开始
+## 开始 {#getting-started}
 
-### 克隆仓库
+### 克隆仓库 {#clone-repository}
 
 ```bash
 git clone https://github.com/laikit-dev/luogu-saver.git
 cd luogu-saver
 ```
 
-### 安装依赖
+### 安装依赖 {#install-dependencies}
 
 ```bash
 npm install
 ```
 
-### 启动
+### 启动 {#start}
 
 ```bash
 node app.js
 ```
 
-出现 `Server is running on port xxx` 说明成功。此时访问 `http://127.0.0.1:<port>` 检查是否能够访问，然后就可以进行开发了。
+出现 `Server is running on port xxx` 说明成功。此时访问 `http://127.0.0.1:端口号` 检查是否能够访问，然后就可以进行开发了。
 
-## 选择一个任务
+## 选择一个任务 {#choose-a-task}
 
 在 `luogu-saver` 的 [Issues](https://github.com/luogu-saver-dev/luogu-saver/issues) 中，过滤出 label 带有 `Backlog` 、没有被分配的 Issue，这些 Issues 是待认领的任务。选择一个任务后，在 Issue 中评论，表示你将认领该任务（记得 @Ark-Aak @CuteMurasame @quanac-lcx ），等待分配。
 

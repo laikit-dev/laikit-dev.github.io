@@ -1,10 +1,8 @@
 
 
-# 特别鸣谢
+# 特别鸣谢 {#special-thanks}
 > [!IMPORTANT]
 > 以下人员或团队对本项目进行了贡献，在此表示感谢。
-
-
 
 <script setup>
 import {

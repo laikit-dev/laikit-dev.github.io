@@ -1,4 +1,4 @@
-# 为本文档做出贡献
+# 为本文档做出贡献 {#contribute-to-docs}
 ::: tip 请注意
 
 这是[本文档](../home)的贡献指南，而非：
@@ -8,21 +8,21 @@
 
 如果你对参与本文档的编写感兴趣，请参考本章节开始上手。要注意的是，本文档在 [`Apache-2.0 许可证 `](../license/Apache-2.0/) 下发行。
 
-::: tip AIGC公约
+::: tip AIGC 公约
 
-我们并不反对使用 AIGC 进行编写。详情请阅读：[AIGC公约](aigc)。
+我们并不反对使用 AIGC 进行编写。详情请阅读：[AIGC 公约](aigc)。
 
 :::
 [Github 仓库](https://github.com/luogu-saver-dev/docs)
-## Markdown 指南
+## Markdown 指南 {#markdown-guide}
 本文档的 Markdown 格式与洛谷略有不同。请仔细阅读。
 
 
-### Markdown 扩展功能示例
+### Markdown 扩展功能示例 {#markdown-extensions-examples}
 
 本页面展示了 VitePress 提供的部分内置 Markdown 扩展功能。
 
-#### 语法高亮
+#### 语法高亮 {#syntax-highlighting}
 
 VitePress 的语法高亮功能由 [Shiki](https://github.com/shikijs/shiki) 提供支持，同时包含行高亮等附加功能：
 
@@ -52,7 +52,7 @@ export default {
 }
 ```
 
-#### 自定义容器
+#### 自定义容器 {#custom-containers}
 
 **输入**
 
@@ -100,14 +100,14 @@ export default {
 这是一个详情折叠块。
 :::
 
-#### 更多扩展功能
+#### 更多扩展功能 {#more-extensions}
 
 如需了解完整的 Markdown 扩展功能列表，请查阅 [官方文档](https://vitepress.dev/guide/markdown)。
 
 
 ---
 
-## Runtime API 示例
+## Runtime API 示例 {#runtime-api-examples}
 
 本页面展示了 VitePress 提供的一些 Runtime API 的用法。
 
