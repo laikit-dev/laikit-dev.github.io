@@ -256,3 +256,7 @@ sudo systemctl start luogu-saver
 # 检查状态
 sudo systemctl status luogu-saver
 ```
+
+<hr />
+
+<center>本页面访问量：<img src="https://w.saobby.com/w/02u6sdfc"></center>
