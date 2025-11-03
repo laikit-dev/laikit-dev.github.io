@@ -5,7 +5,7 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "洛谷保存站帮助中心",
   head: [
-    ["link", { rel: "icon", href: "public/favicon.ico" }],
+    ["link", { rel: "icon", href: "https://www.luogu.me/static/self/img/favicon.ico" }],
     ["meta", { name: "theme-color", content: "#646cff" }],
     ["meta", { name: "og:type", content: "website" }],
     ["meta", { name: "og:locale", content: "zh-CN" }],
@@ -13,6 +13,11 @@ export default defineConfig({
     ["meta", { name: "og:site_name", content: "洛谷保存站帮助中心" }],
     ["meta", { name: "og:image", content: "https://www.luogu.me/favicon.ico" }],
     ["meta", { name: "og:url", content: "https://docs.luogu.me/" }],
+    ['script', { 
+            async : '', 
+            src : "https://analytics.luogu.me/script.js", 
+            "data-website-id" : "32e91990-3c50-4462-8be5-0e6886e6c380"
+         }]
   ],
   description: "洛谷保存站帮助中心 - 提供全面的使用指南和开发文档",
   // base: "/docs/", // 若需要部署到子路径可取消注释，当前注释不影响
@@ -21,7 +26,7 @@ export default defineConfig({
   cleanUrls: true,
   // 顶层 themeConfig（所有主题相关配置都在这里面）
   themeConfig: {
-    logo: "/public/favicon.ico",
+    logo: "https://www.luogu.me/static/self/img/favicon.ico",
     siteTitle: "洛谷保存站帮助中心",
     outlineTitle: "页面导航",
     outline: [2, 6], // 正确：outline 接受 [minLevel, maxLevel]，2~6级标题符合规范
