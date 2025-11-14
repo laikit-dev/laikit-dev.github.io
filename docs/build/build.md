@@ -180,8 +180,14 @@ UPDATE token SET role = 1 WHERE id = 'dfhsugfuidsgfiusodfgafio';
 UPDATE token SET role = 0 WHERE id = 'dfhsugfuidsgfiusodfgafio';
 ```
 
-
 没有傻瓜不会了吧。
+
+#### 后台面板{#backend-dashboard}
+请先确保您的账号是管理员。
+
+登录您的账号，进入后台（`https://127.0.0.1:端口号/admin`），点击 `Token 管理`，找到您要操作的用户，点齿轮，再点 `设为管理员`。
+
+取消管理员同理。
 
 ### 置顶文章{#pin-article}
 被指定的文章会在“最近更新”中置顶显示。原则上不限制置顶数量，但是为了美观，不建议超过 6 篇。
@@ -196,12 +202,6 @@ UPDATE article SET priority = 100 WHERE id = 'your_article_id';
 
 - 您需要将 `your_article_id` 替换为您想置顶的文章 ID。如 `https://www.luogu.me/article/ilovecz6`，那么文章 ID 为 `ilovecz6`。
 
-#### 后台面板{#backend-dashboard}
-请先确保您的账号是管理员。
-
-登录您的账号，进入后台（`https://127.0.0.1:端口号/admin`），点击 `Token 管理`，找到您要操作的用户，点齿轮，再点 `设为管理员`。
-
-取消管理员同理。
 ## 其他操作{#other-operations}
 请在后台自行探索。操作很简单。
 ## 后续步骤{#next}
