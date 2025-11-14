@@ -25,12 +25,15 @@ hero:
 
 features:
   - icon: ⚡
-    title: 操作简便，开箱即用
-    details: 只需将专栏或剪切板链接 URL 改为 .me 即可保存查看。
+    title: 操作简便，功能丰富
+    details: 保存文章、剪切板、个人主页、陶片放逐等功能应有尽有。
   - icon: 🎁
     title: 永久免费，长期可用
-    details: 保证所有保存功能完全开放，无付费内容和广告干扰。
+    details: 保证所有保存功能完全开放。
   - icon: 💎
     title: 现代化前端体验
     details: 基于 SemanticUI 构建，加载流畅、视觉统一、极致简洁。
+  - icon: 🔒
+    title: 安全可靠
+    details: 代码完全开源，用户可自由审计，保障隐私安全，也可以自行部署一个私有保存站。
 ---

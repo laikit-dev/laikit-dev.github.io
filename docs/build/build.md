@@ -93,15 +93,16 @@ export default {
 }
 ```
 - 修改 `port` 为您喜欢的端口。
-- 修改 `database` 为您自己的数据库信息。
+- 修改 `database` 为您自己的数据库信息。推荐使用 [MariaDB](https://mariadb.org/) 或 [MySQL](https://www.mysql.com/)。
 - 修改 `jwtSecret` 为您喜欢的密钥。
-- 修改 `redis` 为您自己的 Redis 信息。
+- 修改 `redis` 为您自己的 [Redis](https://redis.io/downloads/) 信息。
 - 其他内容请自行修改。
-  >[!IMPORTANT] 注意
-  > 未安装或不想使用 Redis？请不要修改此部分内容，我们将**自动**取消 Redis 的使用，无需您手动配置。
+>[!IMPORTANT] 注意
+> 未安装或不想使用 Redis？请不要修改此部分内容，我们将**自动**取消 Redis 的使用，无需您手动配置。
 
 
 不知道配置数据库，可以加入 QQ 群（1017248143）讨论。
+
 ### 修改 `accounts.json`{#modify-accounts-json}
 > [!TIP] 注意
 > 这个玩意是爬取题解能否提交用的，需要用到您的洛谷账号。如果不需要题解信息爬取，可以不修改。请勿泄露 `__client_id`。
@@ -182,7 +183,20 @@ UPDATE token SET role = 0 WHERE id = 'dfhsugfuidsgfiusodfgafio';
 
 没有傻瓜不会了吧。
 
-#### 后台操作{#backend-operation}
+### 置顶文章{#pin-article}
+被指定的文章会在“最近更新”中置顶显示。原则上不限制置顶数量，但是为了美观，不建议超过 6 篇。
+
+进入您的数据库软件的终端，执行如下命令：
+```sql
+use luogu_save; /*这里的 `luogu_save` 为您数据库的名称。*/
+UPDATE article SET priority = 100 WHERE id = 'your_article_id';
+```
+
+这个命令会将指定文章的优先级设置为 `100`。根据 `getRecentArticles` 函数的实现，文章按照 `priority` **降序排列**，然后按`updated_at` **降序排列**，所以设置一个较高的 `priority` 值会使文章出现在最近更新列表的顶部。默认值为 `0`，代表不置顶。
+
+- 您需要将 `your_article_id` 替换为您想置顶的文章 ID。如 `https://www.luogu.me/article/ilovecz6`，那么文章 ID 为 `ilovecz6`。
+
+#### 后台面板{#backend-dashboard}
 请先确保您的账号是管理员。
 
 登录您的账号，进入后台（`https://127.0.0.1:端口号/admin`），点击 `Token 管理`，找到您要操作的用户，点齿轮，再点 `设为管理员`。
