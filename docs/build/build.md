@@ -1,3 +1,9 @@
+> [!IMPORTANT] 仓库已存档
+> [仓库](https://github.com/laikit-dev/luogu-saver)已存档，不再维护和更新。我们正在开发新版保存站，但是本文档的内容仍会**持续更新**，直到 `未定` 时。
+
+> [!TIP] 征求志愿者测试本教程
+> 本教程可能会有错误或疏漏，欢迎各位加入 QQ 群（1017248143）测试并反馈文档问题。也可以直接提交 PR，参考[贡献指南](../dev/docs.md)。
+
 # 从源代码构建 {#build-from-source}
 
 如果您想要从头搭建一个保存站，请阅读此章节。
@@ -10,8 +16,8 @@ git clone https://github.com/laikit-dev/luogu-saver.git #克隆仓库
 cd luogu-saver #进入目录
 npm install #安装依赖
 cp ormconfig.example.json ormconfig.json
-cp settings.example.json settings.json
-cp config.example.json config.json #极其重要
+cp contentConfig.example.json contentConfig.json
+cp config.example.js config.js #极其重要
 cp accounts.example.json accounts.json
 ```
 
@@ -128,8 +134,8 @@ vim accounts.json
 - Chrome 浏览器示例：
 ![](https://lgs-res.kkksc03.com/docs/getCookieChrome.png)
 
-### 修改 `settings.json`{#modify-settings-json}
-`settings.json` 是一些设置文件，一般情况下**无需修改**。
+### 修改 `contentConfig.json`{#modify-settings-json}
+`contentConfig.json` 是一些设置文件，一般情况下**无需修改**。
 
 ## 运行
 在终端中执行如下命令：
