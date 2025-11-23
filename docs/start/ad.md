@@ -1,4 +1,7 @@
-# 申请广告位 {#apply-for-ad-space}
+# 申请广告位 <Badge type="warning">Archived</Badge> {#apply-for-ad-space}
+
+> [!IMPORTANT] Archived
+> 本页面已经暂时停止更新。
 
 您可以随时申请广告位，且不需要向我们支付任何费用。
 

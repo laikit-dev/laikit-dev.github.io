@@ -1,4 +1,7 @@
-# Token {#token}
+# Token <Badge type="warning">Archived</Badge> {#token}
+
+> [!IMPORTANT] Archived
+> 本页面已经暂时停止更新。
 
 ## Token 是什么？ {#what-is-token}
 Token 是您在洛谷保存站的唯一识别凭据，保护您的账户安全。

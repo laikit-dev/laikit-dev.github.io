@@ -1,6 +1,9 @@
-# 更新日志 {#update-log}
+# 更新日志 <Badge type="warning">Archived</Badge> {#update-log}
 
 <img src="https://lgs-res.kkksc03.com/docs/update-icon.svg" width="24" height="24" />
+
+> [!IMPORTANT] Archived
+> 本页面已经暂时停止更新。
 
 > 更新了什么呢？    
 > —— quanac-lcx

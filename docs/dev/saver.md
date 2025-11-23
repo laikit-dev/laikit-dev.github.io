@@ -1,4 +1,7 @@
-# 为洛谷保存站做出贡献 {#contribute-to-luogu-saver}
+# 为洛谷保存站做出贡献 <Badge type="warning">Archived</Badge> {#contribute-to-luogu-saver}
+
+> [!IMPORTANT] Archived
+> 本页面已经暂时停止更新。
 
 ::: tip 请注意
 
