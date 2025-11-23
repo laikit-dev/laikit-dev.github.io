@@ -38,9 +38,9 @@ vim ormconfig.json
 修改 `type` 为您的数据库类型。（常见：`mysql`、`mariadb`、`postgres`、`sqlite`）。
 
 
-### 修改 `config.json`{#modify-config-json}
+### 修改 `config.js`{#modify-config-json}
 ```bash
-vim config.json
+vim config.js
 ```
 代码：
 ```json{3-10,20,35-40}
