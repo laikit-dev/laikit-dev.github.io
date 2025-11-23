@@ -9,9 +9,9 @@
 ## 一、申请须知与案例
 
 **申请结果分为三种：**<br>
-<span style="color:#21BA45">通过</span>：您的删除申请已被审核通过，相关内容将被删除或屏蔽。<br>
-<span style="color:#DB2828">拒绝</span>：您的删除申请未能通过审核，相关内容将继续保留。<br>
-<span style="color:#767676">忽略</span>：您的删除申请由于多种原因被忽略。
+- <span style="color:#21BA45">通过</span>：您的删除申请已被审核通过，相关内容将被删除或屏蔽。<br>
+- <span style="color:#DB2828">拒绝</span>：您的删除申请未能通过审核，相关内容将继续保留。<br>
+- <span style="color:#767676">忽略</span>：您的删除申请由于多种原因被忽略。
 
 <hr />
 
