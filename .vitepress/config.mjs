@@ -6,7 +6,7 @@ export default defineConfig({
   title: "洛谷保存站帮助中心",
   head: [
     ["link", { rel: "icon", href: "https://www.luogu.me/static/self/img/favicon.ico" }],
-    ["meta", { name: "theme-color", content: "#646cff" }],
+    ["meta", { name: "theme-color", content: "#7bff64ff" }],
     ["meta", { name: "og:type", content: "website" }],
     ["meta", { name: "og:locale", content: "zh-CN" }],
     ["meta", { name: "og:title", content: "洛谷保存站帮助中心" }],
@@ -44,6 +44,7 @@ export default defineConfig({
       { text: "📝 更新日志", link: "/docs/update" },
       { text: "🎨 冬日绘版", link: "https://www.luogu.me/paintboard" },
       { text: "📖 构建指南", link: "/docs/build/build.md" },
+      { text: "💻 新文档预览", link: "https://ng-docs-prev.luogu.me" }
     ],
 
     // 搜索配置（正确嵌套在 themeConfig 内）
