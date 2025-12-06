@@ -43,6 +43,7 @@ export default defineConfig({
       { text: "🌟 洛谷保存站", link: "https://www.luogu.me" },
       { text: "📝 更新日志", link: "/docs/update" },
       { text: "🎨 冬日绘版", link: "https://www.luogu.me/paintboard" },
+      { text: "📖 构建指南", link: "/docs/build/build.md" },
     ],
 
     // 搜索配置（正确嵌套在 themeConfig 内）
@@ -135,8 +136,7 @@ export default defineConfig({
         text: "其它",
         collapsed: false,
         items: [
-          { text: "更新日志", link: "/docs/update" },
-          { text: "特别鸣谢", link: "/docs/special/thanks" },
+          { text: "更新日志", link: "/docs/update" }
         ],
       },
     ],
