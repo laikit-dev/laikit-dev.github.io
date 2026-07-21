@@ -1,46 +1,39 @@
 ---
+# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
-title: laikit-dev
-titleTemplate: false
-
 hero:
-  name: "laikit-dev"
-  text: "开源项目与文档"
-  tagline: "一群 OIer 组成的开发团队，持续建设实用的开源服务。"
+  name: "洛谷保存站"
+  text: "帮助中心"
+  tagline: "可靠的洛谷专栏和剪贴板保存平台"
   image:
-    src: /logo.svg
-    alt: laikit-dev
+    src: /homePage.svg
+    alt: 背景图片
   actions:
     - theme: brand
-      text: 洛谷保存站
-      link: https://www.luogu.me
-    - theme: alt
-      text: 浏览帮助文档
+      text: 📚 帮助文档
       link: /docs/home
     - theme: alt
-      text: GitHub
-      link: https://github.com/laikit-dev
+      text: 🛠️ 贡献指南
+      link: /docs/dev/saver
+    - theme: alt
+      text: 🌟 洛谷保存站
+      link: https://www.luogu.me
+    - theme: brand
+      text: 🎨 冬日绘版
+      link: https://www.luogu.me/paintboard
 
 features:
-  - icon: 📦
-    title: 洛谷保存站
-    details: 保存并检索公开的洛谷专栏、剪贴板及其他内容。
-    link: https://www.luogu.me
-    linkText: 进入保存站
-  - icon: 📖
-    title: 使用与开发文档
-    details: 帮助文档、账号凭据、开发指南与政策说明统一收录于本站。
-    link: /docs/home
-    linkText: 查看文档
-  - icon: 🎨
-    title: 冬日绘版
-    details: 面向社区的协作绘画项目，由洛谷保存站承办。
-    link: https://www.luogu.me/paintboard
-    linkText: 进入绘版
-  - icon: 🧰
-    title: 开源协作
-    details: 项目源码、问题跟踪与贡献记录在 GitHub 上公开维护。
-    link: https://github.com/laikit-dev
-    linkText: 访问 GitHub
+  - icon: ⚡
+    title: 操作简便，功能丰富
+    details: 保存文章、剪切板、个人主页、陶片放逐等功能应有尽有。
+  - icon: 🎁
+    title: 永久免费，长期可用
+    details: 保证所有保存功能完全开放。
+  - icon: 💎
+    title: 现代化前端体验
+    details: 基于 SemanticUI 构建，加载流畅、视觉统一、极致简洁。
+  - icon: 🔒
+    title: 安全可靠
+    details: 代码完全开源，用户可自由审计，保障隐私安全，也可以自行部署一个私有保存站。
 ---

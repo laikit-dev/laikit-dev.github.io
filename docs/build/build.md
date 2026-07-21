@@ -1,7 +1,4 @@
-# 从源代码构建 <Badge type="warning">归档</Badge> {#build-from-source}
-
-> [!IMPORTANT] 归档文档
-> 本页面记录旧版洛谷保存站的构建方式，不适用于当前代码库。当前构建步骤以 [luogu-saver 仓库](https://github.com/laikit-dev/luogu-saver) 中的 README 和项目规则为准。
+# 从源代码构建 {#build-from-source}
 
 如果您想要从头搭建一个保存站，请阅读此章节。
 
@@ -13,7 +10,7 @@
 
 > [!DANGER] 注意！！！
 > 由于某些**特殊原因**，保存**专栏、剪贴板、个人主页**，生成 **Token** 等功能需要您能够访问**国际互联网**。如果您处于中国大陆，且在本地构建测试的，请打开您代理的 **TUN（虚拟网卡）** 模式。服务器请选择海外地区。
->
+> 
 > 如果您不需要这些功能，可以忽略此提示。
 >
 > 详见下表。
@@ -146,7 +143,7 @@ vim accounts.json
 修改 `_uid` 为您的洛谷 UID，修改 `__client_id` 为您的洛谷 Client ID。
 如何获取 Client ID？
 1. 登录您的洛谷账号。
-
+   
 2. 点击您键盘上的 `F12` 按钮，打开开发者工具。
 
 3. 点击 `Application` 或 `应用程序` 标签 -> `Cookie` -> `https://www.luogu.com.cn` -> 找到 `__client_id`，复制`值`即可。

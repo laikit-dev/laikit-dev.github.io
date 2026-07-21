@@ -1,21 +1,12 @@
 {
-  "name": "laikit-dev-website",
-  "version": "1.0.0",
-  "private": true,
-  "packageManager": "pnpm@10.33.0",
   "devDependencies": {
     "@giscus/vue": "^3.1.1",
-    "sass-embedded": "^1.100.0",
+    "sass-embedded": "^1.91.0",
     "vitepress": "^1.6.4"
   },
   "scripts": {
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
-  },
-  "pnpm": {
-    "overrides": {
-      "vite": "6.4.3"
-    }
   }
 }
