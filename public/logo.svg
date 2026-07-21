@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">laikit-dev</title>
+  <desc id="desc">A geometric lowercase L formed by connected blocks.</desc>
+  <defs>
+    <linearGradient id="brand" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5b8cff" />
+      <stop offset="1" stop-color="#6d3fd6" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#10162f" />
+  <path d="M18 14h12v26h20v12H18V14Z" fill="url(#brand)" />
+  <circle cx="45" cy="19" r="7" fill="#65d1ff" />
+</svg>

@@ -1,4 +1,8 @@
 {
+  "name": "laikit-dev-website",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.33.0",
   "devDependencies": {
     "@giscus/vue": "^3.1.1",
     "sass-embedded": "^1.91.0",

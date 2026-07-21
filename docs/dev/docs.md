@@ -6,14 +6,14 @@
 - 旧前端
 :::
 
-如果你对参与本文档的编写感兴趣，请参考本章节开始上手。要注意的是，本文档在 [`Apache-2.0 许可证 `](../license/Apache-2.0/) 下发行。
+如果你对参与本网站文档的编写感兴趣，请参考本章节开始上手。提交前请先阅读网站仓库中的项目说明和贡献规则。
 
 ::: tip AIGC 公约
 
 我们并不反对使用 AIGC 进行编写。详情请阅读：[AIGC 公约](aigc)。
 
 :::
-[Github 仓库](https://github.com/luogu-saver-dev/docs)
+[GitHub 仓库](https://github.com/laikit-dev/laikit-dev.github.io)
 ## Markdown 指南 {#markdown-guide}
 本文档的 Markdown 格式与洛谷略有不同。请仔细阅读。
 

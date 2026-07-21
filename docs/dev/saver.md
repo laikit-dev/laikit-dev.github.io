@@ -10,14 +10,14 @@
 - 旧前端
 :::
 
-如果你对参与 洛谷保存站 的开发感兴趣，请参考本章节开始上手。要注意的是，洛谷保存站在 [`GPL-3.0`](../license/GPL-3.0/) 下发行。
+如果你对参与洛谷保存站的开发感兴趣，请参考本章节开始上手。洛谷保存站的许可边界以仓库中的 [LICENSE](https://github.com/laikit-dev/luogu-saver/blob/master/LICENSE) 为准。
 
 ::: tip AIGC 公约
 
 我们并不反对使用 AIGC 进行开发。详情请阅读：[AIGC 公约](aigc)。
 :::
 
-[Github 仓库](https://github.com/luogu-saver-dev/luogu-saver)
+[GitHub 仓库](https://github.com/laikit-dev/luogu-saver)
 
 ## 技术栈 {#tech-stack}
 
@@ -84,6 +84,6 @@ node app.js
 
 ## 选择一个任务 {#choose-a-task}
 
-在 `luogu-saver` 的 [Issues](https://github.com/luogu-saver-dev/luogu-saver/issues) 中，过滤出 label 带有 `Backlog` 、没有被分配的 Issue，这些 Issues 是待认领的任务。选择一个任务后，在 Issue 中评论，表示你将认领该任务（记得 @Ark-Aak @CuteMurasame @quanac-lcx ），等待分配。
+在 `luogu-saver` 的 [Issues](https://github.com/laikit-dev/luogu-saver/issues) 中选择一个待处理任务。开始开发前，请在 Issue 中说明你计划处理该问题。
 
 等待的过程中可以提前开发。

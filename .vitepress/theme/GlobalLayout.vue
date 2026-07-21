@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-  
-import GiscusComment from './gitcus.vue' // 评论模块
+import GiscusComment from './GiscusComment.vue'
 
+const { frontmatter } = useData()
 </script>
 
 <template>
   <DefaultTheme.Layout>
     <template #doc-after>
-      <GiscusComment />
+      <GiscusComment v-if="frontmatter.comments !== false" />
     </template>
   </DefaultTheme.Layout>
 </template>
