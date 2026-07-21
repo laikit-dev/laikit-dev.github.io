@@ -1,8 +1,19 @@
-# 绘板 AccessKey {#paintboard-access-key}
+# 旧绘板 AccessKey <Badge type="warning">历史资料</Badge>
 
-### 申请步骤 {#application-steps}
+本页记录冬日绘板曾经使用的 AccessKey 申请路径，不属于当前洛谷保存站账号系统。
 
-1. 打开 [洛谷保存站](https://www.luogu.me)。
-2. 点击 [申请密钥](https://www.luogu.me/token/apply)，通过云剪贴板申请 **Token**。
-3. 点击 [登录账号](https://www.luogu.me/user/login)，在弹窗输入 **Token** 以登录账号。
-4. 点击 [申请凭据](https://www.luogu.me/paintboard/token)，申请 **AccessKey**。
+## 旧流程
+
+旧流程依赖当时的保存站 Token：
+
+1. 通过验证剪贴板申请旧 Token；
+2. 使用旧 Token 登录保存站；
+3. 访问旧绘板凭据页面申请 AccessKey。
+
+这些入口与旧 Token 系统一同过时，当前侧边栏中的绘板菜单也处于停用状态。不要把 CP OAuth 登录凭据当作绘板 AccessKey，也不要根据旧截图向任何页面提交保存站 Token。
+
+## 历史背景
+
+人工保存的旧更新日志显示，2025-10-01 冬日绘板启动；2025-10 下旬又记录了网页绘画关闭、机器人追踪适配、帮助文档和 API 兼容调整。这些条目属于当时绘板项目的运行记录，不代表 2026 年仍开放相同入口。
+
+如需确认绘板当前状态，请以保存站公告或项目维护者的最新说明为准。

@@ -1,89 +1,82 @@
-# 为洛谷保存站做出贡献 <Badge type="warning">Archived</Badge> {#contribute-to-luogu-saver}
+# 为洛谷保存站做出贡献
 
-> [!IMPORTANT] Archived
-> 本页面已经暂时停止更新。
+主仓库：<https://github.com/laikit-dev/luogu-saver>
 
-::: tip 请注意
+项目以 `AGPL-3.0-or-later` 许可证开源。提交贡献即表示你有权提交相关代码或内容，并接受仓库许可证和协作规则。
 
-这是[洛谷保存站](https://www.luogu.me)的贡献指南，而非：
-- 本文档
-- 旧前端
-:::
+## 开始之前
 
-如果你对参与 洛谷保存站 的开发感兴趣，请参考本章节开始上手。要注意的是，洛谷保存站在 [`GPL-3.0`](../license/GPL-3.0/) 下发行。
+1. 阅读根目录 `AGENTS.md`；
+2. 阅读中文或英文 README；
+3. 后端改动先定位并完整阅读相关 `spec/*.spec.md`；
+4. 运行现有构建与测试，确认基线；
+5. 搜索 issue 和 PR，避免重复工作。
 
-::: tip AIGC 公约
-
-我们并不反对使用 AIGC 进行开发。详情请阅读：[AIGC 公约](aigc)。
-:::
-
-[Github 仓库](https://github.com/luogu-saver-dev/luogu-saver)
-
-## 技术栈 {#tech-stack}
-
-### 核心技术栈 {#core-tech-stack}
-
-1. **后端框架**
-   - Node.js：基于 `v22.18.0` 版本，作为运行时环境
-   - Express：Web 服务器框架，处理路由和 HTTP 请求（见 `app.js` 中的路由配置）
-
-2. **前端技术**
-   - 模板引擎：Nunjucks（用于渲染页面，如 `views` 目录下的 `.njk` 文件）
-   - UI 框架：SemanticUI（静态资源中包含其 CSS 和 JS 文件，见 `static/semantic` 目录）
-   - Markdown 处理：`markdown-it` 及扩展（`markdown-it-attrs`、`markdown-it-container`）用于渲染 Markdown 内容（见 `renderer.js`）
-
-3. **数据库**
-   - MySQL：通过 `mysql2` 库进行数据库操作（见 `package.json` 依赖及 `db.js` 相关逻辑）
-
-4. **其他核心依赖**
-   - axios：用于发送 HTTP 请求（如 `request.js` 中抓取内容）
-   - cheerio：解析 HTML 内容（用于提取页面数据）
-   - node-schedule：定时任务（如清理过期任务，见 `app.js`）
-   - cookie-parser：处理 HTTP cookies
-   - dotenv：管理环境变量
-   - chalk：终端日志着色（见 `logger.js`）
-
-
-### 功能模块划分 {#module-division}
-
-- 路由管理：通过 Express 路由拆分功能（`routes/article.js`、`routes/paste.js` 等）
-- 任务队列：处理异步任务（`request.js` 中的队列管理和请求限制）
-- 日志系统：自定义日志工具（`logger.js`）
-- 工具函数：日期格式化、随机字符串生成等（`utils.js`）
-- 权限中间件：`auth.js` 处理用户认证
-
-
-### 开发与部署 {#development-and-deployment}
-
-- 依赖管理：使用 `npm`（`package.json`）
-- **启动方式：通过 `node app.js` 启动服务（见 README 中的使用说明）
-- 环境配置：通过 `.env` 文件管理环境变量（`.gitignore` 中包含）
-
-## 开始 {#getting-started}
-
-### 克隆仓库 {#clone-repository}
+## 开发流程
 
 ```bash
 git clone https://github.com/laikit-dev/luogu-saver.git
 cd luogu-saver
-```
-
-### 安装依赖 {#install-dependencies}
-
-```bash
 npm install
+docker compose up -d
+npm run dev
 ```
 
-### 启动 {#start}
+完整环境配置见[从源代码构建](../build/build)。
+
+## 后端：规格先行
+
+后端新增功能或可观察行为变化必须遵循：
+
+1. 把预期行为写成可测试、低歧义的英文规格；
+2. 将规格直接放在根目录 `spec/`，不创建子目录；
+3. 回读规格，确认输入、输出、状态和错误边界完整；
+4. 再修改实现；
+5. 完成后逐条核对规格与代码。
+
+Bug 修复也不能跳过规格。如果规格正确，修实现；如果规格本身错误，先修规格再修实现。
+
+## 前端
+
+前端无需新增 spec 文件，但仍应：
+
+- 复用现有组件、主题变量和路由模块；
+- 同时验证桌面与移动布局；
+- 保持深色/浅色/自动模式一致；
+- 为可访问性提供标签、键盘行为和清晰状态；
+- 避免把敏感数据写入 localStorage、日志或 URL；
+- 对跨端功能核对相关后端规格。
+
+## 注释与代码风格
+
+只为非显然的推理、约束、不变量或权衡添加英文注释。不要写重复代码字面含义的注释。
+
+提交前运行：
 
 ```bash
-node app.js
+npm run build
+npm test
+npm run lint:prettier
+npm run lint:eslint
 ```
 
-出现 `Server is running on port xxx` 说明成功。此时访问 `http://127.0.0.1:端口号` 检查是否能够访问，然后就可以进行开发了。
+## 提交 Pull Request
 
-## 选择一个任务 {#choose-a-task}
+1. Fork 仓库并创建聚焦单一目标的分支；
+2. 说明问题、实现、验证结果和必要的迁移步骤；
+3. UI 改动附桌面与移动截图；
+4. 后端改动在同一个 PR 中包含对应规格；
+5. 不提交密钥、生产数据、构建缓存或无关格式化；
+6. 根据评审意见更新代码与规格。
 
-在 `luogu-saver` 的 [Issues](https://github.com/luogu-saver-dev/luogu-saver/issues) 中，过滤出 label 带有 `Backlog` 、没有被分配的 Issue，这些 Issues 是待认领的任务。选择一个任务后，在 Issue 中评论，表示你将认领该任务（记得 @Ark-Aak @CuteMurasame @quanac-lcx ），等待分配。
+Commit message 和 PR 描述只记录实际改动与验证，不添加 AI 产品署名、生成宣传语或虚构共同作者。
 
-等待的过程中可以提前开发。
+## 适合首次贡献的工作
+
+- 可复现的小型前端 Bug；
+- 文档与当前界面的差异；
+- 测试覆盖缺口；
+- 无行为变化的局部可读性改进；
+- 有明确规格和验收条件的 issue。
+
+大型架构重写、数据迁移、权限模型和内容治理规则应先在 issue 中达成共识。

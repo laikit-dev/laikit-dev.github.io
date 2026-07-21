@@ -1,162 +1,167 @@
-import { defineConfig } from "vitepress";
+import { defineConfig } from 'vitepress'
 
-// https://vitepress.dev/reference/site-config
+const sidebar = [
+  {
+    text: '开始使用',
+    collapsed: false,
+    items: [
+      { text: '欢迎与文档地图', link: '/docs/home' },
+      { text: '五分钟上手', link: '/docs/start/quick-start' },
+      { text: '常见问题', link: '/docs/start/faq' }
+    ]
+  },
+  {
+    text: '使用指南',
+    collapsed: false,
+    items: [
+      { text: '查找与保存内容', link: '/docs/guide/search-and-save' },
+      { text: '阅读文章与剪贴板', link: '/docs/guide/reading' },
+      { text: '登录与账号', link: '/docs/account/login' },
+      { text: '设置与本地数据', link: '/docs/guide/settings' }
+    ]
+  },
+  {
+    text: '功能详解',
+    collapsed: true,
+    items: [
+      { text: '文章广场与推荐', link: '/docs/features/plaza' },
+      { text: 'RAG 问答与知识库', link: '/docs/features/rag' },
+      { text: '陶片放逐', link: '/docs/features/judgement' },
+      { text: '通知与工作流', link: '/docs/features/notifications' },
+      { text: '运行统计', link: '/docs/features/statistics' }
+    ]
+  },
+  {
+    text: '政策与治理',
+    collapsed: true,
+    items: [
+      { text: '数据移除政策', link: '/docs/license/deletion' },
+      { text: '隐私说明', link: '/docs/license/privacy' },
+      { text: '免责声明', link: '/docs/license/disclaimer' }
+    ]
+  },
+  {
+    text: '开发与贡献',
+    collapsed: true,
+    items: [
+      { text: '架构总览', link: '/docs/dev/architecture' },
+      { text: '从源代码构建', link: '/docs/build/build' },
+      { text: '保存站贡献指南', link: '/docs/dev/saver' },
+      { text: '文档贡献指南', link: '/docs/dev/docs' },
+      { text: 'AIGC 公约', link: '/docs/dev/aigc' }
+    ]
+  },
+  {
+    text: '项目档案',
+    collapsed: true,
+    items: [
+      { text: '完整历史与更新日志', link: '/docs/update' },
+      { text: '贡献者与资料来源', link: '/docs/special/thanks' },
+      { text: '流量分析', link: '/docs/special/analytics' },
+      { text: '旧 Token 机制', link: '/docs/account/token' },
+      { text: '旧绘板 AccessKey', link: '/docs/account/accessKey' },
+      { text: '旧广告位申请', link: '/docs/start/ad' }
+    ]
+  }
+]
 
 export default defineConfig({
-  title: "洛谷保存站帮助中心",
-  head: [
-    ["link", { rel: "icon", href: "https://www.luogu.me/static/self/img/favicon.ico" }],
-    ["meta", { name: "theme-color", content: "#7bff64ff" }],
-    ["meta", { name: "og:type", content: "website" }],
-    ["meta", { name: "og:locale", content: "zh-CN" }],
-    ["meta", { name: "og:title", content: "洛谷保存站帮助中心" }],
-    ["meta", { name: "og:site_name", content: "洛谷保存站帮助中心" }],
-    ["meta", { name: "og:image", content: "https://www.luogu.me/favicon.ico" }],
-    ["meta", { name: "og:url", content: "https://docs.luogu.me/" }],
-    ['script', { 
-            async : '', 
-            src : "https://analytics.luogu.me/script.js", 
-            "data-website-id" : "32e91990-3c50-4462-8be5-0e6886e6c380"
-         }]
-  ],
-  description: "洛谷保存站帮助中心 - 提供全面的使用指南和开发文档",
-  // base: "/docs/", // 若需要部署到子路径可取消注释，当前注释不影响
-  ignoreDeadLinks: true,
-  lastUpdated: true,
+  lang: 'zh-CN',
+  title: '洛谷保存站帮助中心',
+  titleTemplate: ':title | 洛谷保存站帮助中心',
+  description: '洛谷保存站的使用指南、功能说明、开发文档、政策与项目历史。',
+  srcExclude: ['README.md'],
   cleanUrls: true,
-  // 顶层 themeConfig（所有主题相关配置都在这里面）
+  lastUpdated: true,
+  sitemap: {
+    hostname: 'https://laikit.dev'
+  },
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['meta', { name: 'theme-color', content: '#3451b2' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:locale', content: 'zh_CN' }],
+    ['meta', { property: 'og:title', content: '洛谷保存站帮助中心' }],
+    ['meta', { property: 'og:site_name', content: '洛谷保存站帮助中心' }],
+    ['meta', { property: 'og:url', content: 'https://laikit.dev/' }],
+    ['meta', { property: 'og:image', content: 'https://laikit.dev/lgicon.svg' }],
+    [
+      'script',
+      {
+        defer: '',
+        src: 'https://analytics.luogu.me/script.js',
+        'data-website-id': '32e91990-3c50-4462-8be5-0e6886e6c380',
+        'data-domains': 'laikit.dev',
+        'data-exclude-search': 'true'
+      }
+    ]
+  ],
   themeConfig: {
-    logo: "https://www.luogu.me/static/self/img/favicon.ico",
-    siteTitle: "洛谷保存站帮助中心",
-    outlineTitle: "页面导航",
-    outline: [2, 6], // 正确：outline 接受 [minLevel, maxLevel]，2~6级标题符合规范
-    
-    // 返回顶部
-    returnToTopLabel: "返回顶部",
-    
-    // 暗黑模式切换
-    darkModeSwitchLabel: "外观",
-    lightModeSwitchTitle: "切换到浅色模式",
-    darkModeSwitchTitle: "切换到深色模式",
+    logo: '/lgicon.svg',
+    siteTitle: '洛谷保存站帮助中心',
     nav: [
-      { text: "🏠 文档首页", link: "/" },
-      { text: "🌟 洛谷保存站", link: "https://www.luogu.me" },
-      { text: "🎨 冬日绘版", link: "https://www.luogu.me/paintboard" },
-      { text: "📖 构建指南", link: "/docs/build/build.md" },
-      { text: "💻 新文档预览", link: "https://ng-docs-prev.luogu.me" },
-      { text: "📊 流量分析", link: "/docs/special/analytics" },
+      { text: '文档首页', link: '/' },
+      { text: '使用指南', link: '/docs/start/quick-start' },
+      { text: '项目历史', link: '/docs/update' },
+      { text: '洛谷保存站', link: 'https://www.luogu.me' },
+      { text: 'GitHub', link: 'https://github.com/laikit-dev/luogu-saver' }
     ],
-
-    // 搜索配置（正确嵌套在 themeConfig 内）
+    sidebar,
     search: {
-      provider: "local",
+      provider: 'local',
       options: {
         translations: {
           button: {
-            buttonText: "搜索文档",
-            buttonAriaLabel: "搜索文档",
+            buttonText: '搜索文档',
+            buttonAriaLabel: '搜索文档'
           },
           modal: {
-            noResultsText: "无法找到相关结果",
-            resetButtonTitle: "清除查询条件",
+            noResultsText: '没有找到相关内容',
+            resetButtonTitle: '清除搜索',
             footer: {
-              selectText: "选择",
-              navigateText: "切换",
-            },
-          },
-        },
-      },
+              selectText: '选择',
+              navigateText: '切换',
+              closeText: '关闭'
+            }
+          }
+        }
+      }
     },
-
     editLink: {
-      pattern: "https://github.com/laikit-dev/docs/edit/v1/:path",
-      text: "✏️ 在 Github 上编辑此页面",
+      pattern: 'https://github.com/laikit-dev/laikit-dev.github.io/edit/main/:path',
+      text: '在 GitHub 上编辑此页'
     },
-    
-    // 文档页脚导航
+    outline: [2, 4],
+    outlineTitle: '本页目录',
+    sidebarMenuLabel: '文档目录',
+    skipToContentLabel: '跳转到正文',
+    returnToTopLabel: '返回顶部',
+    darkModeSwitchLabel: '外观',
+    lightModeSwitchTitle: '切换到浅色模式',
+    darkModeSwitchTitle: '切换到深色模式',
     docFooter: {
-      prev: "上一页",
-      next: "下一页",
+      prev: '上一页',
+      next: '下一页'
     },
-    
-    // 最后更新时间
     lastUpdated: {
-      text: "最后更新于",
+      text: '最后更新于',
       formatOptions: {
-        dateStyle: "short",
-        timeStyle: "medium",
-      },
+        dateStyle: 'medium',
+        timeStyle: 'short'
+      }
     },
-    sidebar: [
-      {
-        text: "🚀 起步",
-        collapsed: false,
-        items: [
-          { text: "👋 欢迎", link: "/docs/home" },
-          { text: "🔨 从源代码构建", link: "/docs/build/build" },
-          { text: "📢 广告位申请", link: "/docs/start/ad" },
-        ],
-      },
-      {
-        text: "👤 账号相关",
-        collapsed: false,
-        items: [
-            { text: "🔑 Token", link: "/docs/account/token" },
-            { text: "🎨 绘板AccessKey", link: "/docs/account/accessKey" },
-        ],
-      },
-      {
-        text: "🎨 冬日绘版",
-        collapsed: false,
-        items: [
-          { text: "📖 介绍", link: "https://www.luogu.me/article/pssi9ceo" },
-          { text: "📋 API文档", link: "https://www.luogu.me/article/57b4jd3c" },
-          { text: "📊 非官方计划统计", link: "https://www.luogu.me/article/b069ty2v" },
-          { text: "🎨 绘版链接", link: "https://www.luogu.me/paintboard" },
-        ],
-      },
-      {
-        text: "开发",
-        collapsed: true,
-        items: [
-          { text: "针对洛谷保存站的贡献指南", link: "/docs/dev/saver" },
-          { text: "针对本文档的贡献指南", link: "/docs/dev/docs" },
-          { text: "AIGC 公约", link: "/docs/dev/aigc" },
-        ],
-      },
-      {
-        text: "协议与政策",
-        collapsed: true,
-        items: [
-          { text: "免责声明", link: "/docs/license/disclaimer" },
-          { text: "数据移除政策", link: "/docs/license/deletion" },
-          { text: "隐私协议", link: "/docs/license/privacy" },
-        ],
-      },
-      {
-        text: "其它",
-        collapsed: false,
-        items: [
-          { text: "更新日志", link: "/docs/update" }
-        ],
-      },
-    ],
-
-    // 社交链接配置
     socialLinks: [
-      { icon: "github", link: "https://github.com/laikit-dev/docs" },
+      { icon: 'github', link: 'https://github.com/laikit-dev/luogu-saver' }
     ],
-
-    // 页脚配置
     footer: {
-      message: "基于 GPL-3.0 协议开源",
-      copyright: "© 2025 laikit-dev ",
+      message: 'Luogu Saver 以 AGPL-3.0-or-later 许可证开源',
+      copyright: '© 2025–2026 laikit-dev'
     },
     notFound: {
-      title: "页面未找到",
-      quote: "抱歉，您访问的页面不存在。可能链接地址有误，或页面已被移动。",
-      linkLabel: "brand",
-      linkText: "TAKE ME HOME",
-    },
-  },
-});
+      title: '页面未找到',
+      quote: '该页面可能已移动、删除，或链接地址有误。',
+      linkLabel: '返回文档首页',
+      linkText: '返回文档首页'
+    }
+  }
+})

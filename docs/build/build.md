@@ -1,301 +1,219 @@
-# 从源代码构建 {#build-from-source}
+# 从源代码构建
 
-如果您想要从头搭建一个保存站，请阅读此章节。
+本页适用于当前 `laikit-dev/luogu-saver`。旧版 `node app.js`、Nunjucks、Semantic UI、`ormconfig.json`、`accounts.json` 和手工修改数据库 Token 角色的教程已经失效。
 
-::::details 说明（必读）
+::: warning 先明确边界
 
-> [!TIP] 提示
-> 本文档假设您已经安装了 Node.js、npm、MariaDB/MySQL、Redis 等相关软件。
-> 如果您不确定如何安装这些软件，请参考相关文档或教程。
+仓库根目录的 `docker-compose.yml` 只适合本地开发和单机测试。生产环境必须使用私有网络、非默认凭据、独立备份和正式的反向代理方案。
 
-> [!DANGER] 注意！！！
-> 由于某些**特殊原因**，保存**专栏、剪贴板、个人主页**，生成 **Token** 等功能需要您能够访问**国际互联网**。如果您处于中国大陆，且在本地构建测试的，请打开您代理的 **TUN（虚拟网卡）** 模式。服务器请选择海外地区。
-> 
-> 如果您不需要这些功能，可以忽略此提示。
->
-> 详见下表。
-> :::details 表格
-> | 功能 | 是否需要访问国际互联网 |
-> | --- | --- |
-> | 保存专栏 | 是 |
-> | 保存剪贴板 | 是 |
-> | 保存个人主页 | 是 |
-> | 生成 Token | 是 |
-> | 保存题目信息 | Unkown |
-> | 保存陶片放逐 | 否 |
-> | 保存犇犇 | 否 |
-> :::
-::::
+:::
 
-## 准备工作{#preparation}
-在终端中执行如下命令：
+## 当前架构
+
+项目是 npm workspaces Monorepo：
+
+- `packages/frontend`：Vue 3、Vite、Vue Router、Naive UI；
+- `packages/backend`：Koa 3、TypeScript、TypeORM；
+- `packages/markdown-renderer`：前后端共用的 Markdown 渲染包；
+- MariaDB：文章、剪贴板、用户、工作流等持久数据；
+- Redis：缓存、BullMQ 队列、OAuth state、匿名推荐和限流；
+- Meilisearch：文章全文检索，可关闭；
+- Chroma：文章摘要与分块向量，可关闭；
+- Socket.IO：任务、队列和发现流程的实时更新。
+
+## 前置要求
+
+- Node.js 22.18.0 或更高版本；
+- npm；
+- Docker 与 Docker Compose；
+- Git；
+- 至少可用的 MariaDB 与 Redis；
+- 可选的 Meilisearch、Chroma、LLM 提供方和 CP OAuth 应用。
+
+## 1. 克隆与安装
 
 ```bash
-git clone https://github.com/laikit-dev/luogu-saver.git #克隆仓库
-cd luogu-saver #进入目录
-npm install #安装依赖
-cp ormconfig.example.json ormconfig.json
-cp contentConfig.example.json contentConfig.json
-cp config.example.js config.js #极其重要
-cp accounts.example.json accounts.json
+git clone https://github.com/laikit-dev/luogu-saver.git
+cd luogu-saver
+npm install
 ```
 
-## 修改默认值{#modify-default-values}
+`npm install` 会一次安装根目录与所有工作区依赖。
 
-### 修改 `ormconfig.json`{#modify-ormconfig-json}
+## 2. 启动本地基础设施
+
+先创建 `.env`：
+
+```dotenv
+SAVER_DB_ROOT_PASSWORD=请替换为随机的本地密码
+SAVER_MEILI_MASTER_KEY=请替换为随机的本地密钥
+```
+
+再启动依赖：
+
 ```bash
-vim ormconfig.json
+docker compose up -d
+docker compose ps
 ```
-代码：
-```json{2}
-{
-    "type": "mariadb",
-    "synchronize": true,
-    "logging": true
-}
+
+Compose 中 MariaDB、Redis、Chroma 和 Meilisearch 的端口都只绑定 `127.0.0.1`。这不会启动 Node.js 前后端。
+
+首次启动 MariaDB 后，需要创建配置中使用的数据库；如果沿用 `root` 用户，也必须让 `config.yml` 中的密码与 `.env` 一致。
+
+## 3. 创建 `config.yml`
+
+后端启动时必须找到 YAML 配置。最简单的路径是仓库根目录 `config.yml`。也可以通过 `CONFIG_PATH` 指向其他文件。
+
+以下是用于理解结构的最小开发示例，不是生产配置：
+
+```yaml
+host: 127.0.0.1
+port: 3000
+env: development
+
+db:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: 请填写与本地 MariaDB 一致的密码
+  database: luogu_saver
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password: ''
+  keyPrefix: lgs_dev
+
+chroma:
+  enable: false
+  host: 127.0.0.1
+  port: 8000
+  ssl: false
+
+meilisearch:
+  enable: false
+  host: http://127.0.0.1:7700
+  apiKey: 请填写本地 Meilisearch 密钥
+
+recommendation: {}
+
+llm:
+  providers: []
+  scenarios:
+    chat: { use: disabled/model }
+    summary: { use: disabled/model }
+    embedding: { use: disabled/model }
+    censor: { use: disabled/model }
+
+verification:
+  luogu: {}
 ```
-修改 `type` 为您的数据库类型。（常见：`mysql`、`mariadb`、`sqlite`）。
 
+该示例可以通过配置结构校验，但没有 LLM provider，任何真正调用 AI 的任务都会失败。要启用摘要、向量、RAG 或内容安全任务，必须加入与 OpenAI 兼容接口对应的 provider、token 和模型映射。
 
-### 修改 `config.js`{#modify-config-json}
+配置还支持队列并发、API 限流、文章发现、陶片同步、工作流清理、Tor 回退和 CP OAuth。字段以主仓库 `spec/config-system.spec.md` 和 `packages/backend/src/config/schemas/` 为准。
+
+::: danger 不要提交密钥
+
+`config.yml`、OAuth client secret、模型 API token、数据库密码和任何洛谷 Cookie 都不应提交到 Git。发布前运行 `git status` 和敏感信息扫描。
+
+:::
+
+## 4. 开发模式
+
 ```bash
-vim config.js
+npm run dev
 ```
-代码：
-```json{3-10,20,35-40}
-export default {
-	debug: true,
-	port: 55086,
-	database: {
-		host: 'localhost',
-		port: 3306,
-		user: 'luogu_saver',
-		password: 'your_password',
-		database: 'luogu_save'
-	},
-	pagination: {
-		search: 10,
-		problem: 50
-	},
-	request: {
-		concurrency: 2,
-		maxRequestToken: 20,
-		tokenRefillInterval: 1000
-	},
-	jwtSecret: 'your_jwt_secret',
-     requestHeader: {
-		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36',
-		'x-luogu-type': 'content-only'
-	},
-	queue: {
-		processInterval: 200,
-		maxLength: 500
-	},
-	recent: {
-		article: {
-			default: 20,
-			max: 2000
-		}
-	},
-	redis: {
-		host: '127.0.0.1',
-		port: 6379,
-		password: null,
-		db: 0
-	},
-	service: { // 用于爬取犇犇
-		name: "luogu-saver",
-		api_url: "https://api-benben.imken.dev",
-		crawler_url: "https://spider-benben.imken.dev",
-		ws_url: "wss://spider-benben.imken.dev",
-		callback_timeout: 30000
-	},
-	rss: {
-		article: {
-			recentHours: 24
-		}
-	}
-}
-```
-- 修改 `port` 为您喜欢的端口。
-- 修改 `database` 为您自己的数据库信息。推荐使用 [MariaDB](https://mariadb.org/) 或 [MySQL](https://www.mysql.com/)。
-- 修改 `jwtSecret` 为您喜欢的密钥。
-- 修改 `redis` 为您自己的 [Redis](https://redis.io/downloads/) 信息。
-- 其他内容请自行修改。
->[!IMPORTANT] 注意
-> 未安装或不想使用 Redis？请不要修改此部分内容，我们将**自动**取消 Redis 的使用，无需您手动配置。
 
+该命令同时启动：
 
-不知道配置数据库，可以加入 QQ 群（1017248143）讨论。
+- Vite 前端开发服务器；
+- Koa 后端开发进程。
 
-### 修改 `accounts.json`{#modify-accounts-json}
-> [!TIP] 注意
-> 这个玩意是爬取题解能否提交用的，需要用到您的洛谷账号。如果不需要题解信息爬取，可以不修改。请勿泄露 `__client_id`。
+前端开发代理默认把 `/api` 转发到本地后端。若使用自定义地址，请查看 `packages/frontend/vite.config.ts` 和 `VITE_API_URL`。
+
+## 5. 构建与测试
+
+完整构建：
+
 ```bash
-vim accounts.json
+npm run build
 ```
-代码如下：
-```json{2}
-[
-	{ "_uid": "114514", "__client_id": "1145141919810" }
-]
-```
-修改 `_uid` 为您的洛谷 UID，修改 `__client_id` 为您的洛谷 Client ID。
-如何获取 Client ID？
-1. 登录您的洛谷账号。
-   
-2. 点击您键盘上的 `F12` 按钮，打开开发者工具。
 
-3. 点击 `Application` 或 `应用程序` 标签 -> `Cookie` -> `https://www.luogu.com.cn` -> 找到 `__client_id`，复制`值`即可。
+分别构建：
 
-- Edge 浏览器示例：
-![](https://lgs-res.kkksc03.com/docs/getCookieEdge.png)
-- Chrome 浏览器示例：
-![](https://lgs-res.kkksc03.com/docs/getCookieChrome.png)
-
-### 修改 `contentConfig.json`{#modify-settings-json}
-`contentConfig.json` 是一些设置文件，一般情况下**无需修改**。
-
-## 运行
-在终端中执行如下命令：
 ```bash
-node app.js
-```
-出现 `Server is running on port xxx` 说明成功。此时访问 `http://127.0.0.1:端口号` 即可。
-
-## 管理员操作{#admin-operation}
-### 添加/取消管理员{#add-or-cancel-administrator}
-> [!TIP] 提示
-> 仅需在第一次运行时用命令行工具添加管理员。后续可以直接在后台操作。需要先注册一个用户（Token）。注意您的 Token 与 `luogu.me` 并不相同两者互不影响。
-
-#### 命令行操作{#command-line-operation}
-进入您的数据库软件的终端，执行如下命令：
-```sql
-use luogu_save;
-```
-这里的 `luogu_save` 为您数据库的名称。在这里获取数据库名称：
-```json{9}
-export default {
-	debug: true,
-	port: 55086,
-	database: {
-		host: 'localhost',
-		port: 3306,
-		user: 'luogu_saver',
-		password: 'your_password',
-		database: 'luogu_save' // here
-	},
-	pagination: {
-		search: 10,
-		problem: 50
-	},
-	// 后略……
-}
-```
-接下来执行：
-```sql
-UPDATE token SET role = 1 WHERE id = 'your_token';
-/* role = 1 为管理员，如果要取消管理员，把 1 改成 0 即可！*/
-```
-比如你的 Token 是 `dfhsugfuidsgfiusodfgafio`，那么命令为：
-```sql
-/* 给予管理权 */
-UPDATE token SET role = 1 WHERE id = 'dfhsugfuidsgfiusodfgafio';
-/* 取消管理权 */
-UPDATE token SET role = 0 WHERE id = 'dfhsugfuidsgfiusodfgafio';
+npm run build -w @luogu-saver/markdown-renderer
+npm run build -w @luogu-saver/backend
+npm run build -w @luogu-saver/frontend
 ```
 
-没有傻瓜不会了吧。
+质量检查：
 
-#### 后台面板{#backend-dashboard}
-请先确保您的账号是管理员。
-
-登录您的账号，进入后台（`https://127.0.0.1:端口号/admin`），点击 `Token 管理`，找到您要操作的用户，点齿轮，再点 `设为管理员`。
-
-取消管理员同理。
-
-### 置顶文章{#pin-article}
-被指定的文章会在“最近更新”中置顶显示。原则上不限制置顶数量，但是为了美观，不建议超过 6 篇。
-
-进入您的数据库软件的终端，执行如下命令：
-```sql
-use luogu_save; /*这里的 `luogu_save` 为您数据库的名称。*/
-UPDATE article SET priority = 100 WHERE id = 'your_article_id';
-```
-
-这个命令会将指定文章的优先级设置为 `100`。根据 `getRecentArticles` 函数的实现，文章按照 `priority` **降序排列**，然后按`updated_at` **降序排列**，所以设置一个较高的 `priority` 值会使文章出现在最近更新列表的顶部。默认值为 `0`，代表不置顶。
-
-- 您需要将 `your_article_id` 替换为您想置顶的文章 ID。如 `https://www.luogu.me/article/ilovecz6`，那么文章 ID 为 `ilovecz6`。
-
-## 其他操作{#other-operations}
-请在后台自行探索。操作很简单。
-## 后续步骤{#next}
-恭喜您，您已经搭建了一个保存站。
-
-### 更新{#update}
-请在终端中执行如下命令：
 ```bash
-git pull
-npm install #以防缺少新依赖，小版本更新不需要（节省时间）
-node app.js #启动
+npm test
+npm run lint:prettier
+npm run lint:eslint
 ```
-### 配置 PM2{#configure-pm2}
-PM2 是一个 Node.js 的进程管理工具，它可以帮助您管理您的 Node.js 应用程序。
 
-管理后台的重启服务功能也依赖 PM2。
+前端产物位于 `packages/frontend/dist`，后端编译产物位于 `packages/backend/dist`。
 
-在终端执行：
+## 6. 本地运行构建产物
+
 ```bash
-npm install -g pm2
-pm2 start app.js --name luogu-saver
+node packages/backend/dist/index.js
 ```
-即可。
 
-### 配置 Systemctl{#configure-systemctl}
-Systemctl 是一个 Linux 的进程管理工具，它可以帮助您管理您的 Node.js 应用程序。
-> [!DANGER] AI 声明
-> 此部分内容由 AI 生成，未经验证。
+后端默认监听 3000 端口。前端可以使用任意静态服务器预览；正式部署时必须把 SPA 回退和 `/api` 反向代理配置正确。
 
+## 7. 生产部署要点
 
-#### 创建systemd服务文件
+生产方案至少满足：
+
+1. MariaDB、Redis、Chroma 和 Meilisearch只允许后端主机或私有网络访问；
+2. 不把 3306、6379、8000、7700 暴露到公网；
+3. 替换全部默认凭据并配置备份；
+4. 静态服务器托管前端 `dist`，未知前端路由回退到 `index.html`；
+5. `/api` 和 Socket.IO 正确反向代理到后端；
+6. HTTPS、可信代理头与 API 限流按实际拓扑配置；
+7. 自动部署所需的 GitHub Environment secrets 与仓库变量全部就绪。
+
+仓库的自动部署默认关闭。只有 `ENABLE_PRODUCTION_DEPLOYMENT=true` 时，推送到 `master` 才进入生产部署；陶片迁移完成前，前端还受 `JUDGEMENT_MIGRATION_READY=true` 保护。
+
+## 8. 陶片放逐历史导入
+
+旧 SQLite 数据不在 Git 中。导入前必须备份源文件并确认旧服务时区：
+
 ```bash
-# 创建服务文件
-sudo nano /etc/systemd/system/luogu-saver.service
+npm run import:judgement -w @luogu-saver/backend -- \
+  --db /安全路径/judgements.db \
+  --source-time-zone +08:00
 ```
 
-#### 服务文件内容
-```ini
-[Unit]
-Description=Luogu Saver Node.js Application
-After=network.target
+导入器可以重复运行，并输出数量、去重键和时间范围审计。先关闭新同步调度，完成数量核对后再启用，并观察 `/judgement/logs` 中的首次成功抓取。
 
-[Service]
-Type=simple
-User=你的用户名
-WorkingDirectory=/path/to/luogu-saver
-ExecStart=/usr/bin/node app.js
-Restart=always
-RestartSec=10
-Environment=NODE_ENV=production
+## 9. 常见故障
 
-[Install]
-WantedBy=multi-user.target
-```
-#### 启用和启动服务
+### 找不到 `config.yml`
+
+设置绝对路径：
+
 ```bash
-# 重新加载systemd配置
-sudo systemctl daemon-reload
-
-# 启用服务（开机自启）
-sudo systemctl enable luogu-saver
-
-# 启动服务
-sudo systemctl start luogu-saver
-
-# 检查状态
-sudo systemctl status luogu-saver
+CONFIG_PATH=/absolute/path/config.yml npm run dev
 ```
 
-<hr />
+### 数据库或 Redis 连接失败
 
-<center>本页面访问量：<img src="https://w.saobby.com/w/02u6sdfc"></center>
+检查 `docker compose ps`、本地端口、密码、数据库名和 `keyPrefix`。不要用“临时暴露公网端口”解决连接问题。
+
+### 搜索或 RAG 不工作
+
+确认 Meilisearch/Chroma 已启用且密钥一致，并确认模型 provider 与场景映射存在。基础文章浏览可用，不代表所有可选 AI 服务已经配置。
+
+### 保存任务一直等待
+
+查看保存站“统计数据”页或 BullMQ 日志，确认 worker 已启动、队列未暂停、Redis 正常、并发与令牌桶未耗尽。
+
+### 洛谷抓取失败
+
+检查源站可达性、响应结构、验证码挑战和请求限流。Tor 回退是可选高级配置，不是绕过内容权限的工具。

@@ -1,24 +1,40 @@
-# Token <Badge type="warning">Archived</Badge> {#token}
+# 旧 Token 机制 <Badge type="warning">历史资料</Badge>
 
-> [!IMPORTANT] Archived
-> 本页面已经暂时停止更新。
+::: danger 请勿继续按旧流程操作
 
-## Token 是什么？ {#what-is-token}
-Token 是您在洛谷保存站的唯一识别凭据，保护您的账户安全。
+保存站已经迁移到 [CP OAuth 登录](./login)。旧 Token 不再是现役登录方式，旧创建接口返回已停用状态，不会生成新的旧式凭据。
 
-## 如何申请 Token {#how-to-apply-token}
+:::
 
-请前往 <https://www.luogu.me/token/apply>，输入您的洛谷 UID，和用于验证的剪切板 ID。
+## 它曾经如何工作
 
-## 注意事项 {#precautions}
+早期保存站要求用户在洛谷创建一个内容为 `lgs_register_verification` 的公开剪贴板，再向保存站提交洛谷 UID 和剪贴板 ID。服务器读取剪贴板以验证控制权，然后生成只显示一次的站内 Token。
 
-- 需要提供有效的剪贴板 ID 作为身份验证，剪贴板内容应为 `lgs_register_verification`（无多余空格或字符）。请一定不要泄露您的验证剪切板 ID，最好是在申请 Token 后删除。
-- 申请的凭据只会显示一次，请注意保存，重复申请将刷新凭据。
-- 本凭据将作为您在洛谷保存站识别身份的唯一凭据。
-- 如有滥用行为，我们有权吊销您的 Token 使用权。
-- Token 若被盗用，请立即重新申请，旧 Token 会被删除。
+旧 Token 曾用于登录和权限识别；重新申请会刷新凭据，泄露后需要再次申请。它与洛谷账号 Cookie、`__client_id` 和现在的 OAuth Token 都不是同一种东西。
 
-## 使用场合 {#use-cases}
+## 为什么被替换
 
-- 登录账号
-- TBD
+从当前代码与 Git 历史可以确认：
+
+- 2026-02 已建立基于 Bearer Token 的统一授权中间件；
+- 2026-05 接入 CP OAuth 和独立的 `registered_user` 登录表；
+- 现役认证明确不读取旧 `token` 表；
+- `POST /token/create` 已停用；
+- 当前界面只提供“使用 CP OAuth 登录”。
+
+OAuth 避免用户手工制作验证剪贴板，也把身份绑定、state、PKCE 和回调校验纳入标准登录流程。
+
+## 旧链接怎么办
+
+历史文章可能仍指向 `/token/apply` 或 `/user/login`。这些链接描述的是旧前端，不应作为当前操作指南。请直接进入保存站“设置”页登录。
+
+## 如果还保存着旧 Token
+
+- 不要公开它；历史部署或旧服务仍可能把它当作敏感数据。
+- 不要把它填入 CP OAuth 页面。
+- 当前保存站无法使用时，先通过正常 OAuth 重新登录。
+- 若旧 Token 曾经泄露，请按敏感凭据处理并联系维护者。
+
+## 历史定位
+
+帮助中心在 2025-08-24 记录过 Token 申请说明修改，后续 2025 年旧版构建文档仍以 Token 作为管理员身份基础。现役代码史中的认证架构已经完全不同，因此本页保留的目的只是解释旧截图、旧链接和迁移背景。

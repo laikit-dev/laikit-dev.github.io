@@ -1,157 +1,80 @@
-# 为本文档做出贡献 {#contribute-to-docs}
-::: tip 请注意
+# 为帮助中心做出贡献
 
-这是[本文档](../home)的贡献指南，而非：
-- 洛谷保存站
-- 旧前端
-:::
+帮助中心源码位于 <https://github.com/laikit-dev/laikit-dev.github.io>，部署域名是 <https://laikit.dev>。
 
-如果你对参与本文档的编写感兴趣，请参考本章节开始上手。要注意的是，本文档在 [`Apache-2.0 许可证 `](../license/Apache-2.0/) 下发行。
+## 本地预览
 
-::: tip AIGC 公约
-
-我们并不反对使用 AIGC 进行编写。详情请阅读：[AIGC 公约](aigc)。
-
-:::
-[Github 仓库](https://github.com/luogu-saver-dev/docs)
-## Markdown 指南 {#markdown-guide}
-本文档的 Markdown 格式与洛谷略有不同。请仔细阅读。
-
-
-### Markdown 扩展功能示例 {#markdown-extensions-examples}
-
-本页面展示了 VitePress 提供的部分内置 Markdown 扩展功能。
-
-#### 语法高亮 {#syntax-highlighting}
-
-VitePress 的语法高亮功能由 [Shiki](https://github.com/shikijs/shiki) 提供支持，同时包含行高亮等附加功能：
-
-**输入**
-
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
-
-**输出**
-
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
+```bash
+git clone https://github.com/laikit-dev/laikit-dev.github.io.git
+cd laikit-dev.github.io
+pnpm install
+pnpm run docs:dev
 ```
 
-#### 自定义容器 {#custom-containers}
+生产构建：
 
-**输入**
-
-```md
-::: info
-这是一个信息框。
-:::
-
-::: tip
-这是一个提示框。
-:::
-
-::: warning
-这是一个警告框。
-:::
-
-::: danger
-这是一个危险警告框。
-:::
-
-::: details
-这是一个详情折叠块。
-:::
+```bash
+pnpm run docs:build
+pnpm run docs:preview
 ```
 
-**输出**
+## 内容原则
 
-::: info
-这是一个信息框。
-:::
+### 事实优先
 
-::: tip
-这是一个提示框。
-:::
+每一条功能说明应至少来自以下一种证据：
 
-::: warning
-这是一个警告框。
-:::
+- 当前保存站界面和源码；
+- `spec/*.spec.md`；
+- README、配置 schema 或公开 API；
+- 可定位的 Git 提交；
+- 维护者明确发布的公告。
 
-::: danger
-这是一个危险警告框。
-:::
+不要把计划、注释中的 TODO、关闭的菜单、未部署代码或旧站截图写成现役功能。
 
-::: details
-这是一个详情折叠块。
-:::
+### 区分历史证据
 
-#### 更多扩展功能 {#more-extensions}
+2025-08 至 10 月的旧版时间线主要来自人工维护的更新日志；2025-11 之后的现役代码史可以由当前 Git 仓库复核。补充历史时必须保留这个证据边界。
 
-如需了解完整的 Markdown 扩展功能列表，请查阅 [官方文档](https://vitepress.dev/guide/markdown)。
+### 面向任务写作
 
+普通用户页面先回答“如何完成”，再解释实现。开发文档可以给出文件路径、协议和数据流，但不要复制整段源码或容易漂移的内部实现。
 
----
+### 不复制敏感信息
 
-## Runtime API 示例 {#runtime-api-examples}
+示例必须使用占位符。不要提交真实 Token、Cookie、OAuth secret、数据库密码、模型 key、生产 IP 或删除申请中的个人信息。
 
-本页面展示了 VitePress 提供的一些 Runtime API 的用法。
+## 目录约定
 
-主要的 `useData()` API 可用于访问当前页面的站点数据、主题数据和页面数据。它可以在 `.md` 和 `.vue` 文件中使用：
+- `docs/start/`：上手和 FAQ；
+- `docs/guide/`：日常使用；
+- `docs/features/`：独立功能；
+- `docs/account/`：登录与历史账号机制；
+- `docs/license/`：政策和法律说明；
+- `docs/dev/`、`docs/build/`：开发者内容；
+- `docs/special/`：贡献者、资料来源和统计；
+- `docs/update.md`：项目历史与更新日志。
 
-```md
-<script setup>
-import { useData } from 'vitepress'
+新增页面后同步 `.vitepress/config.mjs` 的侧边栏，并保证站内链接使用无扩展名路径。
 
-const { theme, page, frontmatter } = useData()
-</script>
+## Markdown
 
-### 结果
+帮助中心使用 VitePress Markdown，支持：
 
-#### 主题数据
-<pre>{{ theme }}</pre>
+- 标题锚点和自动目录；
+- `::: info`、`tip`、`warning`、`danger`、`details` 容器；
+- 表格、任务列表和代码高亮；
+- Vue 组件与 `<script setup>`，但应只在 Markdown 无法清晰表达时使用。
 
-#### 页面数据
-<pre>{{ page }}</pre>
+完整语法见 [VitePress Markdown 指南](https://vitepress.dev/guide/markdown)。
 
-#### 页面 Frontmatter
-<pre>{{ frontmatter }}</pre>
-```
+## 提交前检查
 
-<script setup>
-import { useData } from 'vitepress'
-
-const { site, theme, page, frontmatter } = useData()
-</script>
-
-### 结果
-
-#### 主题数据
-
-<pre>{{ theme }}</pre>
-
-#### 页面数据
-
-<pre>{{ page }}</pre>
-
-#### 页面 Frontmatter
-
-<pre>{{ frontmatter }}</pre>
-
-### 更多内容
-
-查看文档以获取 [Runtime API 的完整列表](https://vitepress.dev/reference/runtime-api#usedata)。
+1. `pnpm run docs:build` 成功；
+2. 没有失效内部链接；
+3. 新页面已进入导航；
+4. 桌面与移动侧边栏可用；
+5. 域名统一为 `laikit.dev`；
+6. GitHub 仓库链接使用现役组织和分支；
+7. 历史资料明确标注，不冒充当前步骤；
+8. 没有无依据的承诺、百分比或处理时限。
