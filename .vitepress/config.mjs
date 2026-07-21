@@ -89,8 +89,8 @@ export default defineConfig({
       'script',
       {
         defer: '',
-        src: 'https://analytics.luogu.me/script.js',
-        'data-website-id': '32e91990-3c50-4462-8be5-0e6886e6c380',
+        src: 'https://analytics.lailai.one/script.js',
+        'data-website-id': '4677a99a-4992-4e2d-9518-7e3966b74b32',
         'data-domains': 'laikit.dev',
         'data-exclude-search': 'true'
       }

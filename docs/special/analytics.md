@@ -5,14 +5,12 @@
 ## 当前接入
 
 - 保存站前端包含 Cloudflare Web Analytics；
-- 帮助中心加载位于 `analytics.luogu.me` 的 Umami tracker；
+- 帮助中心加载位于 `analytics.lailai.one` 的 Umami tracker；
 - 帮助中心限制 tracker 只在 `laikit.dev` 域名运行，并排除 URL 查询参数。
 
 Umami 的 website ID 写在帮助中心 VitePress 配置中。统计后台账号、数据库和管理入口不应提交到公开仓库。
 
-::: warning 当前可用性
-截至 2026-07-21，直接请求 `https://analytics.luogu.me/script.js` 返回 HTTP 502。这里的“当前接入”只表示帮助中心仍保留 tracker 配置，不表示统计服务此刻可用。恢复服务后还需要在 `laikit.dev` 实际访问页面，并在 Umami 后台确认新事件已经入库。
-:::
+2026-07-21，帮助中心从返回 HTTP 502 的旧 `analytics.luogu.me` tracker 迁移到 `analytics.lailai.one`，同时更换对应的 website ID。迁移时新 tracker 脚本返回 HTTP 200；实际统计闭环仍应以 `laikit.dev` 产生访问后，Umami 后台出现对应页面浏览记录为准。
 
 ## 历史共享链接
 
