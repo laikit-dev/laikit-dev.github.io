@@ -16,7 +16,7 @@ importers:
         version: 1.91.0
       vitepress:
         specifier: ^1.6.4
-        version: 1.6.4(@algolia/client-search@5.36.0)(postcss@8.5.6)(sass-embedded@1.91.0)(sass@1.91.0)(search-insights@2.17.3)
+        version: 1.6.4(@algolia/client-search@5.36.0)(postcss@8.5.31)(sass-embedded@1.91.0)(sass@1.91.0)(search-insights@2.17.3)
 
 packages:
 
@@ -788,8 +788,8 @@ packages:
   mitt@3.0.1:
     resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
 
-  nanoid@3.3.11:
-    resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
+  nanoid@3.3.20:
+    resolution: {integrity: sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -809,8 +809,8 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
-  postcss@8.5.6:
-    resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
+  postcss@8.5.31:
+    resolution: {integrity: sha512-YUbWYCgErwnMAVkjUnYa+KlMBzGpHwiIt/DE7f0G33AuX2LH9UcTk6KgWxd3zRU+pN3u/C+Xl3EnMLM4Hea7Sg==}
     engines: {node: ^10 || ^12 || >=14}
 
   preact@10.27.1:
@@ -1540,7 +1540,7 @@ snapshots:
       '@vue/shared': 3.5.20
       estree-walker: 2.0.2
       magic-string: 0.30.18
-      postcss: 8.5.6
+      postcss: 8.5.31
       source-map-js: 1.2.2
 
   '@vue/compiler-ssr@3.5.20':
@@ -1821,7 +1821,7 @@ snapshots:
 
   mitt@3.0.1: {}
 
-  nanoid@3.3.11: {}
+  nanoid@3.3.20: {}
 
   node-addon-api@7.1.1:
     optional: true
@@ -1839,9 +1839,9 @@ snapshots:
   picomatch@2.3.1:
     optional: true
 
-  postcss@8.5.6:
+  postcss@8.5.31:
     dependencies:
-      nanoid: 3.3.11
+      nanoid: 3.3.20
       picocolors: 1.1.1
       source-map-js: 1.2.2
 
@@ -2078,14 +2078,14 @@ snapshots:
   vite@5.4.19(sass-embedded@1.91.0)(sass@1.91.0):
     dependencies:
       esbuild: 0.21.5
-      postcss: 8.5.6
+      postcss: 8.5.31
       rollup: 4.48.1
     optionalDependencies:
       fsevents: 2.3.3
       sass: 1.91.0
       sass-embedded: 1.91.0
 
-  vitepress@1.6.4(@algolia/client-search@5.36.0)(postcss@8.5.6)(sass-embedded@1.91.0)(sass@1.91.0)(search-insights@2.17.3):
+  vitepress@1.6.4(@algolia/client-search@5.36.0)(postcss@8.5.31)(sass-embedded@1.91.0)(sass@1.91.0)(search-insights@2.17.3):
     dependencies:
       '@docsearch/css': 3.8.2
       '@docsearch/js': 3.8.2(@algolia/client-search@5.36.0)(search-insights@2.17.3)
@@ -2106,7 +2106,7 @@ snapshots:
       vite: 5.4.19(sass-embedded@1.91.0)(sass@1.91.0)
       vue: 3.5.20
     optionalDependencies:
-      postcss: 8.5.6
+      postcss: 8.5.31
     transitivePeerDependencies:
       - '@algolia/client-search'
       - '@types/node'
